@@ -26,6 +26,8 @@ return {
         "html-lsp",
         "css-lsp",
         "prettier",
+        -- markdown
+        "marksman",
         -- csharp
         "omnisharp",
         "csharpier",
@@ -48,6 +50,8 @@ return {
         "vimdoc",
         "html",
         "css",
+        -- md
+        "markdown",
         -- FP
         "haskell",
         -- my first love but she sucks
