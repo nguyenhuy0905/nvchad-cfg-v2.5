@@ -11,7 +11,7 @@ local dap = require "dap"
 dap.adapters.lldb = {
   type = "executable",
   command = "/usr/bin/lldb-vscode",
-  name = "lldb"
+  name = "lldb",
 }
 dap.configurations.cpp = {
   {
@@ -60,8 +60,8 @@ dap.configurations.cs = {
     type = "coreclr",
     request = "launch",
     name = "Launch - netcoredbg",
-    program = function ()
-      return vim.fn.input("Path to DLL: ", vim.fn.getcwd() .. '/bin/Debug/', 'file')
+    program = function()
+      return vim.fn.input("Path to DLL: ", vim.fn.getcwd() .. "/bin/Debug/", "file")
     end,
   },
 }

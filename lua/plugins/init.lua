@@ -82,9 +82,9 @@ return {
   {
     "folke/neodev.nvim",
     opts = {},
-    config = function ()
+    config = function()
       require "configs.neodev"
-    end
+    end,
   },
   {
     "Hoffs/omnisharp-extended-lsp.nvim",
@@ -92,9 +92,9 @@ return {
   {
     -- oh, java, god damn it
     "mfussenegger/nvim-jdtls",
-    config = function ()
+    config = function()
       require "configs.jdtls"
-    end
+    end,
   },
   {
     "nvim-neotest/neotest",
@@ -106,8 +106,8 @@ return {
       "Issafalcon/neotest-dotnet",
       "mrcjkb/neotest-haskell",
     },
-    config = function ()
-      require("configs.neotest")
-    end
+    config = function()
+      require "configs.neotest"
+    end,
   },
 }

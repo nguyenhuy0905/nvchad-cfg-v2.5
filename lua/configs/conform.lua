@@ -3,9 +3,9 @@ local options = {
     lua = { "stylua" },
     -- css = { "prettier" },
     -- html = { "prettier" },
-    c = {"clang-format"},
-    cpp = {"clang-format"},
-    c_sharp = {"csharpier"},
+    c = { "clang-format" },
+    cpp = { "clang-format" },
+    c_sharp = { "csharpier" },
   },
 
   format_on_save = {

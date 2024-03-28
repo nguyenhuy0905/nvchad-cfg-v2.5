@@ -31,7 +31,7 @@ end, { desc = "DAP Restart debug" })
 -- neotest
 local ntest = require "neotest"
 map("n", "<leader>tr", function()
-  ntest.run.run({strategy = "dap"})
+  ntest.run.run { strategy = "dap" }
 end, { desc = "Neotest Run nearest test" })
 
 map("n", "<leader>tc", function()
