@@ -26,8 +26,12 @@ return {
         "html-lsp",
         "css-lsp",
         "prettier",
+        -- snek
+        "pyright",
+        "pylint",
         -- markdown
         "marksman",
+        "vale",
         -- csharp
         "omnisharp",
         "csharpier",
@@ -41,6 +45,10 @@ return {
       },
     },
   },
+  -- linters not included in mason
+  {
+    "danmar/cppcheck",
+  },
   {
     "nvim-treesitter/nvim-treesitter",
     opts = {
@@ -50,6 +58,8 @@ return {
         "vimdoc",
         "html",
         "css",
+        -- sneklang
+        "python",
         -- md
         "markdown",
         -- FP
@@ -84,6 +94,12 @@ return {
     end,
   },
   {
+    "mfussenegger/nvim-lint",
+    config = function()
+      require "configs.lint"
+    end,
+  },
+  {
     "folke/neodev.nvim",
     opts = {},
     config = function()
@@ -109,6 +125,7 @@ return {
       "nvim-treesitter/nvim-treesitter",
       "Issafalcon/neotest-dotnet",
       "mrcjkb/neotest-haskell",
+      "nvim-neotest/neotest-python",
     },
     config = function()
       require "configs.neotest"
