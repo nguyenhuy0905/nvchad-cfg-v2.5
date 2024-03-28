@@ -20,6 +20,10 @@ ntest.setup {
     },
     require "neotest-java" {
       ignore_wrapper = false,
+    },
+    require "neotest-rust" {
+      args = {"--no-capture"},
+      dap_adapter = "lldb",
     }
   },
 }

@@ -16,22 +16,28 @@ for _, lsp in ipairs(servers) do
 end
 
 -- non-default configs
-lspconfig.rust_analyzer.setup {
-  on_attach = on_attach,
-  on_init = on_init,
-  capabilities = capabilities,
-  ["rust_analyzer"] = {
-    cargo = {
-      allFeatures = true,
-    },
-  },
-}
+-- lspconfig.rust_analyzer.setup {
+--   on_attach = on_attach,
+--   on_init = on_init,
+--   capabilities = capabilities,
+--   ["rust_analyzer"] = {
+--     cargo = {
+--       allFeatures = true,
+--     },
+--   },
+-- }
 
 lspconfig.jdtls.setup {
   on_attach = on_attach,
   on_init = on_init,
   capabilities = capabilities,
-  cmd = {"/home/huynguyen/jdt-language-server/bin/jdtls", "-configuration", "/home/huynguyen/.cache/jdtls/config", "-data", "/home/huynguyen/.cache/jdtls/workspace"}
+  cmd = {
+    "/home/huynguyen/jdt-language-server/bin/jdtls",
+    "-configuration",
+    "/home/huynguyen/.cache/jdtls/config",
+    "-data",
+    "/home/huynguyen/.cache/jdtls/workspace",
+  },
 }
 
 lspconfig.omnisharp.setup {

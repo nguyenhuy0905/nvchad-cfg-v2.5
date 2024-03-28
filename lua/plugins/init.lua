@@ -126,6 +126,7 @@ return {
       "mrcjkb/neotest-haskell",
       "nvim-neotest/neotest-python",
       "rcasia/neotest-java",
+      "rouge8/neotest-rust",
     },
     config = function()
       require "configs.neotest"
@@ -141,10 +142,9 @@ return {
   },
   {
     "mfussenegger/nvim-dap-python",
-    ft = {"python"},
-    config = function (_, opts)
-      local cwd = vim.fn.getcwd()
-      require("dap-python").setup(cwd .. "/.venv/bin/python")
-    end
-  }
+    ft = { "python" },
+    config = function()
+      require("dap-python").setup "~/.local/share/nvim/mason/packages/debugpy/venv/bin/python"
+    end,
+  },
 }
