@@ -4,7 +4,7 @@ local on_init = require("nvchad.configs.lspconfig").on_init
 local capabilities = require("nvchad.configs.lspconfig").capabilities
 
 local lspconfig = require "lspconfig"
-local servers = {"pyright", "marksman", "html", "cssls", "clangd" }
+local servers = { "marksman", "html", "cssls", "clangd", "pyright" }
 
 -- lsps with default config
 for _, lsp in ipairs(servers) do
@@ -25,6 +25,13 @@ lspconfig.rust_analyzer.setup {
       allFeatures = true,
     },
   },
+}
+
+lspconfig.jdtls.setup {
+  on_attach = on_attach,
+  on_init = on_init,
+  capabilities = capabilities,
+  cmd = {"/home/huynguyen/jdt-language-server/bin/jdtls", "-configuration", "/home/huynguyen/.cache/jdtls/config", "-data", "/home/huynguyen/.cache/jdtls/workspace"}
 }
 
 lspconfig.omnisharp.setup {

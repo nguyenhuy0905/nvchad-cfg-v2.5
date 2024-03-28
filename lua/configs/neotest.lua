@@ -15,10 +15,11 @@ ntest.setup {
     },
     require "neotest-python" {
       dap = { justMyCode = false },
-      args = { "--log-level", "DEBUG" },
-      runner = "pytest",
-      python = ".venv/bin/python",
-      pytest_descover_instances = true,
+      python = "python",
+      pytest_discover_instances = true,
     },
+    require "neotest-java" {
+      ignore_wrapper = false,
+    }
   },
 }

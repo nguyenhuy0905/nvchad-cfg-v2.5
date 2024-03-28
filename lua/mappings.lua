@@ -45,6 +45,9 @@ end, { desc = "Neotest Stop" })
 map("n", "<leader>tr", function()
   ntest.run.attach()
 end, { desc = "Neotest Attach to nearest test" })
+map("n", "<leader>tw", function()
+  ntest.watch.watch()
+end, {desc = "Neotest Watch test results"})
 -- linting
 local lint = require "lint"
 map("n", "<leader>la", function()

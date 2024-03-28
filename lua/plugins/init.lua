@@ -1,3 +1,4 @@
+---@diagnostic disable: different-requires
 return {
   {
     "stevearc/conform.nvim",
@@ -27,14 +28,19 @@ return {
         "css-lsp",
         "prettier",
         -- snek
+        "debugpy",
         "pyright",
         "pylint",
+        "pylyzer",
+        "pyright",
         -- markdown
         "marksman",
         "vale",
         -- csharp
         "omnisharp",
         "csharpier",
+        -- java
+        "jdtls",
         -- c-cpp
         "clangd",
         "clang-format",
@@ -110,13 +116,6 @@ return {
     "Hoffs/omnisharp-extended-lsp.nvim",
   },
   {
-    -- oh, java, god damn it
-    "mfussenegger/nvim-jdtls",
-    config = function()
-      require "configs.jdtls"
-    end,
-  },
-  {
     "nvim-neotest/neotest",
     dependencies = {
       "nvim-neotest/nvim-nio",
@@ -126,9 +125,26 @@ return {
       "Issafalcon/neotest-dotnet",
       "mrcjkb/neotest-haskell",
       "nvim-neotest/neotest-python",
+      "rcasia/neotest-java",
     },
     config = function()
       require "configs.neotest"
     end,
   },
+  -- different, more robust tools for some languages
+  {
+    -- oh, java, god damn it
+    "mfussenegger/nvim-jdtls",
+    config = function()
+      require "configs.jdtls"
+    end,
+  },
+  {
+    "mfussenegger/nvim-dap-python",
+    ft = {"python"},
+    config = function (_, opts)
+      local cwd = vim.fn.getcwd()
+      require("dap-python").setup(cwd .. "/.venv/bin/python")
+    end
+  }
 }
