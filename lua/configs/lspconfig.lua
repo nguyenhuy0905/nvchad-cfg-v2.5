@@ -44,11 +44,11 @@ lspconfig.omnisharp.setup {
   cmd = { "dotnet", "/home/huynguyen/.local/share/nvim/mason/packages/omnisharp/libexec/OmniSharp.dll" },
   enable_editorconfig_support = true,
   enable_roslyn_analyzers = true,
-  -- handlers = {
-  --   ["textDocument/definition"] = require("omnisharp_extended").definition_handler,
-  --   ["textDocument/references"] = require("omnisharp_extended").references_handler,
-  --   ["textDocument/implementation"] = require("omnisharp_extended").implementation_handler,
-  -- },
+  handlers = {
+    ["textDocument/definition"] = require("omnisharp_extended").definition_handler,
+    ["textDocument/references"] = require("omnisharp_extended").references_handler,
+    ["textDocument/implementation"] = require("omnisharp_extended").implementation_handler,
+  },
 }
 
 lspconfig.hls.setup {
