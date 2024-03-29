@@ -27,23 +27,32 @@ return {
         "html-lsp",
         "css-lsp",
         "prettier",
+        -- openscad
+        "openscad-lsp",
+        -- bash
+        "bash-language-server",
         -- snek
         "debugpy",
-        "pyright",
-        "pylint",
-        "pylyzer",
-        "pyright",
+        "ruff",
+        "ruff-lsp",
         -- markdown
         "marksman",
         "vale",
         -- csharp
         "omnisharp",
         "csharpier",
+        "netcoredbg",
         -- java
         "jdtls",
+        "java-debug-adapter",
         -- c-cpp
         "clangd",
         "clang-format",
+        "cmake-language-server",
+        "checkmake",
+        "cmake",
+        "cmakelang",
+        "codelldb",
         --haskell
         "haskell-language-server",
         --rust
@@ -83,6 +92,7 @@ return {
   },
   {
     "mfussenegger/nvim-dap",
+    lazy = "VeryLazy",
     config = function()
       require "configs.dap"
     end,
@@ -114,6 +124,10 @@ return {
   },
   {
     "Hoffs/omnisharp-extended-lsp.nvim",
+    lazy = "VeryLazy",
+    dependencies = {
+      "neovim/nvim-lspconfig",
+    },
   },
   {
     "nvim-neotest/neotest",
@@ -126,7 +140,6 @@ return {
       "mrcjkb/neotest-haskell",
       "nvim-neotest/neotest-python",
       "rcasia/neotest-java",
-      "rouge8/neotest-rust",
     },
     config = function()
       require "configs.neotest"
@@ -144,7 +157,29 @@ return {
     "mfussenegger/nvim-dap-python",
     ft = { "python" },
     config = function()
-      require("dap-python").setup "~/.local/share/nvim/mason/packages/debugpy/venv/bin/python"
+      require("dap-python").setup "python"
+    end,
+  },
+  {
+    "mistricky/codesnap.nvim",
+    build = "make build_generator",
+    lazy = "true",
+    version = "^1",
+    cmd = "CodeSnap",
+    config = function()
+      require("codesnap").setup {
+        mac_window_bar = false,
+        code_font_family = "JetBrainsMono Nerd Font",
+        bg_theme = "summer",
+      }
+    end,
+  },
+  {
+    "mrcjkb/rustaceanvim",
+    version = "^4", -- Recommended
+    ft = { "rust" },
+    config = function()
+      require "configs.rust"
     end,
   },
 }

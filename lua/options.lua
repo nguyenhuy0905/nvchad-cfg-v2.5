@@ -2,10 +2,22 @@ require "nvchad.options"
 
 -- add yours here!
 
--- local o = vim.o
+-- klocal o = vim.o
 -- o.cursorlineopt ='both' -- to enable cursorline!
-vim.api.nvim_create_autocmd({"BufWritePost"}, {
-  callback = function ()
+local autocmd = vim.api.nvim_create_autocmd
+
+-- autocmd
+autocmd({ "BufWritePost" }, {
+  callback = function()
     require("lint").try_lint()
-  end
+  end,
 })
+-- user cmd
+-- mainly to activate some plugins
+local cmd = vim.api.nvim_create_user_command
+cmd("NeotestAll", function ()
+  require("neotest").run.run(vim.fn.expand "%")
+end, {})
+cmd("Lint", function ()
+  require("lint").try_lint()
+end, {})

@@ -1,7 +1,12 @@
 local lint = require "lint"
 
 lint.linters_by_ft = {
-  python = { "pylint" },
-  c = { "cppcheck" },
-  cpp = { "cppcheck" },
+  text = { "codespell" },
+  python = { "ruff" },
+  c = { "clangtidy" },
+  cpp = { "clangtidy" },
+  c_sharp = { "csharpier" },
+  markdown = { "vale" },
+  cmake = { "checkmake" },
 }
+

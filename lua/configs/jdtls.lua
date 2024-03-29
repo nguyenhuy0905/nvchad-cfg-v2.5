@@ -21,14 +21,14 @@ local config = {
     '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
 
     -- 💀
-    -'-jar', '/home/huynguyen/jdt-language-server/plugins/org.eclipse.equinox.launcher_1.6.800.v20240304-1850.jar',
+    '-jar', '/home/huynguyen/.local/share/nvim/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_1.6.700.v20231214-2017.jar',
          -- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^                                       ^^^^^^^^^^^^^^
          -- Must point to the                                                     Change this to
          -- eclipse.jdt.ls installation                                           the actual version
 
 
     -- 💀
-    '-configuration', '/home/huynguyen/jdt-language-server/config_linux',
+    '-configuration', '/home/huynguyen/.local/share/nvim/mason/packages/jdtls/config_linux',
     -- '-configuration', '/path/to/jdtls_install_location/config_SYSTEM',
                     -- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^        ^^^^^^
                     -- Must point to the                      Change to one of `linux`, `win` or `mac`
@@ -62,7 +62,8 @@ local config = {
   -- If you don't plan on using the debugger or other eclipse.jdt.ls plugins you can remove this
   init_options = {
     bundles = {
-      vim.fn.glob("/home/huynguyen/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-0.52.0.jar", 1)
+      -- vim.fn.glob("/home/huynguyen/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-0.52.0.jar", 1)
+      vim.fn.glob("/home/huynguyen/.local/share/nvim/mason/packages/java-debug-adapter/extension/server/com.microsoft.java.debug.plugin-0.50.0.jar", 1)
     }
   },
 }

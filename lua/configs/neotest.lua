@@ -21,9 +21,20 @@ ntest.setup {
     require "neotest-java" {
       ignore_wrapper = false,
     },
-    require "neotest-rust" {
-      args = {"--no-capture"},
-      dap_adapter = "lldb",
-    }
+    require "rustaceanvim.neotest",
   },
 }
+
+-- mapping
+map("n", "<leader>tr", function()
+  ntest.run.run()
+end, { desc = "Neotest Run nearest test" })
+map("n", "<leader>st", function()
+  ntest.run.stop()
+end, { desc = "Neotest Stop" })
+map("n", "<leader>tr", function()
+  ntest.run.attach()
+end, { desc = "Neotest Attach to nearest test" })
+map("n", "<leader>tw", function()
+  ntest.watch.watch()
+end, { desc = "Neotest Watch test results" })

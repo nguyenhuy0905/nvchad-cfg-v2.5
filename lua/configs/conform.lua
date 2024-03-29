@@ -5,8 +5,9 @@ local options = {
     html = { "prettier" },
     c = { "clang-format" },
     cpp = { "clang-format" },
+    cmake = { "cmakelang" },
     c_sharp = { "csharpier" },
-    -- python = { "pyink" },
+    python = { "ruff" },
   },
 
   format_on_save = {
