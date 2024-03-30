@@ -33,8 +33,8 @@ return {
         "bash-language-server",
         -- snek
         "debugpy",
+        "basedpyright",
         "ruff",
-        "ruff-lsp",
         -- markdown
         "marksman",
         "vale",
@@ -157,7 +157,8 @@ return {
     "mfussenegger/nvim-dap-python",
     ft = { "python" },
     config = function()
-      require("dap-python").setup "python"
+      require("dap-python").setup "~/.local/share/nvim/mason/packages/debugpy/venv/bin/python"
+      require("dap-python").test_runner = "pytest"
     end,
   },
   {

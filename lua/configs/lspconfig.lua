@@ -4,7 +4,7 @@ local on_init = require("nvchad.configs.lspconfig").on_init
 local capabilities = require("nvchad.configs.lspconfig").capabilities
 
 local lspconfig = require "lspconfig"
-local servers = {"bashls", "marksman", "html", "cssls", "ruff_lsp", "cmake" }
+local servers = { "bashls", "basedpyright", "marksman", "html", "cssls", "cmake", "openscad_lsp" }
 
 -- lsps with default config
 for _, lsp in ipairs(servers) do
@@ -16,11 +16,11 @@ for _, lsp in ipairs(servers) do
 end
 
 -- non-default configs
-lspconfig.clangd.setup{
+lspconfig.clangd.setup {
   on_attach = on_attach,
   on_init = on_init,
   capabilities = capabilities,
-  cmd = {"clangd", "--clang-tidy"}
+  cmd = { "clangd", "--clang-tidy" },
 }
 lspconfig.jdtls.setup {
   on_attach = on_attach,

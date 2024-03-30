@@ -19,7 +19,7 @@ ntest.setup {
       pytest_discover_instances = true,
     },
     require "neotest-java" {
-      ignore_wrapper = false,
+      ignore_wrapper = true,
     },
     require "rustaceanvim.neotest",
   },
@@ -29,6 +29,9 @@ ntest.setup {
 map("n", "<leader>tr", function()
   ntest.run.run()
 end, { desc = "Neotest Run nearest test" })
+map("n", "<leader>tc", function()
+  ntest.run.run { vim.fn.expand "%", strategy = "dap" }
+end, { desc = "Neotest Run current file" })
 map("n", "<leader>st", function()
   ntest.run.stop()
 end, { desc = "Neotest Stop" })
@@ -38,3 +41,9 @@ end, { desc = "Neotest Attach to nearest test" })
 map("n", "<leader>tw", function()
   ntest.watch.watch()
 end, { desc = "Neotest Watch test results" })
+map("n", "<leader>oo", function()
+  ntest.output.open { enter = true, auto_close = true }
+end)
+map("n", "<leader>tp", function()
+  ntest.summary.toggle()
+end, { desc = "Neotest Toggle summary panel" })

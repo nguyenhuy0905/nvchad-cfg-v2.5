@@ -12,6 +12,7 @@ autocmd({ "BufWritePost" }, {
     require("lint").try_lint()
   end,
 })
+vim.cmd [[ autocmd BufRead,BufNewFile *.scad set filetype=openscad ]]
 -- user cmd
 -- mainly to activate some plugins
 local cmd = vim.api.nvim_create_user_command
