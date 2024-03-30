@@ -123,13 +123,6 @@ return {
     end,
   },
   {
-    "Hoffs/omnisharp-extended-lsp.nvim",
-    lazy = "VeryLazy",
-    dependencies = {
-      "neovim/nvim-lspconfig",
-    },
-  },
-  {
     "nvim-neotest/neotest",
     dependencies = {
       "nvim-neotest/nvim-nio",
@@ -145,6 +138,17 @@ return {
       require "configs.neotest"
     end,
   },
+  {
+    "NeogitOrg/neogit",
+    dependencies = {
+      "nvim-lua/plenary.nvim", -- required
+      "sindrets/diffview.nvim", -- optional - Diff integration
+
+      -- Only one of these is needed, not both.
+      "nvim-telescope/telescope.nvim", -- optional
+    },
+    config = true,
+  },
   -- different, more robust tools for some languages
   {
     -- oh, java, god damn it
@@ -152,6 +156,13 @@ return {
     config = function()
       require "configs.jdtls"
     end,
+  },
+  {
+    "Hoffs/omnisharp-extended-lsp.nvim",
+    lazy = "VeryLazy",
+    dependencies = {
+      "neovim/nvim-lspconfig",
+    },
   },
   {
     "mfussenegger/nvim-dap-python",
