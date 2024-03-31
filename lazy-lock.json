@@ -46,6 +46,7 @@
   "rustaceanvim": { "branch": "master", "commit": "b1433cb70569b888d26a26232da93fdbc76cb4a8" },
   "telescope.nvim": { "branch": "master", "commit": "1bb28df3cfc241b961331f00dcb8d5b45fe3e4f0" },
   "trouble.nvim": { "branch": "main", "commit": "b9cf677f20bb2faa2dacfa870b084e568dca9572" },
+  "twilight.nvim": { "branch": "main", "commit": "8b7b50c0cb2dc781b2f4262a5ddd57571556d1e4" },
   "ui": { "branch": "v2.5", "commit": "41885870b11124e5e1dc1f854c34b67dcfc0642e" },
   "which-key.nvim": { "branch": "main", "commit": "4433e5ec9a507e5097571ed55c02ea9658fb268a" }
 }
