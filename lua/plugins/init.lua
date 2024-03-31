@@ -292,13 +292,6 @@ return {
     -- Uncomment next line if you want to follow only stable versions
     -- version = "*"
   },
-  {
-    "folke/zen-mode.nvim",
-    event = "BufEnter",
-    config = function()
-      require "configs.zen-mode"
-    end,
-  },
   -- different, more robust tools for some languages
   {
     -- oh, java, god damn it
