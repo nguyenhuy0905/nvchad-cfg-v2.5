@@ -12,9 +12,15 @@ autocmd({ "BufWritePost" }, {
     require("lint").try_lint()
   end,
 })
-vim.cmd [[ autocmd BufRead,BufNewFile *.scad set filetype=openscad ]]
+autocmd({"LspAttach"}, {
+  callback = function ()
+    require("trouble")
+  end,
+})
 -- user cmd
 -- mainly to activate some plugins
+-- adds a new filetype called scad
+vim.cmd [[ autocmd BufRead,BufNewFile *.scad set filetype=openscad ]]
 local cmd = vim.api.nvim_create_user_command
 cmd("NeotestAll", function ()
   require("neotest").run.run(vim.fn.expand "%")

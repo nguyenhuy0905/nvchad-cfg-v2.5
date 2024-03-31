@@ -87,6 +87,8 @@ return {
         "c",
         "cpp",
         "rust",
+        -- note-taking
+        "norg",
       },
     },
   },
@@ -123,6 +125,13 @@ return {
     end,
   },
   {
+    "folke/trouble.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    config = function()
+      require "configs.trouble"
+    end,
+  },
+  {
     "nvim-neotest/neotest",
     dependencies = {
       "nvim-neotest/nvim-nio",
@@ -149,6 +158,20 @@ return {
     },
     config = true,
   },
+  {
+    "vhyrro/luarocks.nvim",
+    priority = 1000, -- We'd like this plugin to load first out of the rest
+    config = true, -- This automatically runs `require("luarocks-nvim").setup()`
+  },
+  {
+    "nvim-neorg/neorg",
+    dependencies = { "luarocks.nvim" },
+    ft = "norg",
+    -- put any other flags you wanted to pass to lazy here!
+    config = function()
+      require "configs.neorg"
+    end,
+  },
   -- different, more robust tools for some languages
   {
     -- oh, java, god damn it
@@ -159,7 +182,7 @@ return {
   },
   {
     "Hoffs/omnisharp-extended-lsp.nvim",
-    lazy = "VeryLazy",
+    ft = { "c_sharp" },
     dependencies = {
       "neovim/nvim-lspconfig",
     },
@@ -192,6 +215,14 @@ return {
     ft = { "rust" },
     config = function()
       require "configs.rust"
+    end,
+  },
+  {
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    ft = { "markdown" },
+    build = function()
+      vim.fn["mkdp#util#install"]()
     end,
   },
 }
