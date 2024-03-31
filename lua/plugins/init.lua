@@ -172,6 +172,17 @@ return {
       require "configs.neorg"
     end,
   },
+  -- Lua
+  {
+    "folke/twilight.nvim",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+    },
+    event = "BufEnter",
+    config = function()
+      require "configs.twilight"
+    end,
+  },
   -- different, more robust tools for some languages
   {
     -- oh, java, god damn it

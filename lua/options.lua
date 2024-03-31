@@ -12,9 +12,14 @@ autocmd({ "BufWritePost" }, {
     require("lint").try_lint()
   end,
 })
-autocmd({"LspAttach"}, {
-  callback = function ()
-    require("trouble")
+autocmd({ "LspAttach" }, {
+  callback = function()
+    require "trouble"
+  end,
+})
+autocmd({ "BufEnter" }, {
+  callback = function()
+    require("twilight").enable()
   end,
 })
 -- user cmd
@@ -22,12 +27,12 @@ autocmd({"LspAttach"}, {
 -- adds a new filetype called scad
 vim.cmd [[ autocmd BufRead,BufNewFile *.scad set filetype=openscad ]]
 local cmd = vim.api.nvim_create_user_command
-cmd("NeotestAll", function ()
+cmd("NeotestAll", function()
   require("neotest").run.run(vim.fn.expand "%")
 end, {})
-cmd("Lint", function ()
+cmd("Lint", function()
   require("lint").try_lint()
 end, {})
-cmd("Neogit", function ()
+cmd("Neogit", function()
   require("neogit").open()
 end, {})

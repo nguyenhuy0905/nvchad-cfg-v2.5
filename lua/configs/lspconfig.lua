@@ -20,7 +20,7 @@ lspconfig.clangd.setup {
   on_attach = on_attach,
   on_init = on_init,
   capabilities = capabilities,
-  cmd = { "clangd", "--clang-tidy" },
+  cmd = { "clangd" },
 }
 lspconfig.jdtls.setup {
   on_attach = on_attach,

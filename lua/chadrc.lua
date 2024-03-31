@@ -5,9 +5,9 @@
 local M = {}
 
 M.ui = {
-  theme = "tokyonight",
+  theme = "gruvbox",
   transparency = false,
-  theme_toggle = {"tokyonight", "gruvbox"},
+  theme_toggle = {"gruvbox", "gruvbox"},
 
   hl_override = {
     Comment = { italic = true },
