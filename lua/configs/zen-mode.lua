@@ -1,5 +1,8 @@
 local zen = require "zen-mode"
 zen.setup {
+  window = {
+    width = 150,
+  },
   gitsign = { enabled = true },
   tmux = { enabled = true },
 }

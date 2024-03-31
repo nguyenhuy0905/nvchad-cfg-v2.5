@@ -17,6 +17,9 @@ return {
     end,
   },
   {
+    "ms-jpq/coq_nvim",
+  },
+  {
     "williamboman/mason.nvim",
     opts = {
       ensure_installed = {
