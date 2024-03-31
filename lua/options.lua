@@ -2,11 +2,15 @@ require "nvchad.options"
 
 -- add yours here!
 
--- klocal o = vim.o
+local o = vim.o
 -- o.cursorlineopt ='both' -- to enable cursorline!
-local autocmd = vim.api.nvim_create_autocmd
+o.termguicolors = true
+o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
+o.foldcolumn = "1"
 
 -- autocmd
+local autocmd = vim.api.nvim_create_autocmd
+vim.notify = require "notify"
 autocmd({ "BufWritePost" }, {
   callback = function()
     require("lint").try_lint()
@@ -15,11 +19,6 @@ autocmd({ "BufWritePost" }, {
 autocmd({ "LspAttach" }, {
   callback = function()
     require "trouble"
-  end,
-})
-autocmd({ "BufEnter" }, {
-  callback = function()
-    require("twilight").enable()
   end,
 })
 -- user cmd

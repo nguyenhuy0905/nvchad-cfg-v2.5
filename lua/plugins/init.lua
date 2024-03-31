@@ -17,7 +17,31 @@ return {
     end,
   },
   {
+    "ray-x/lsp_signature.nvim",
+    event = "VeryLazy",
+    opts = {
+      hint_prefix = "👉",
+      doc_lines = 0,
+      max_height = 3,
+    },
+    config = function(_, opts)
+      require("lsp_signature").setup(opts)
+    end,
+  },
+  {
     "ms-jpq/coq_nvim",
+  },
+  {
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope.nvim",
+    },
+    event = "BufEnter",
+    config = function()
+      require "configs.harpoon"
+    end,
   },
   {
     "williamboman/mason.nvim",
@@ -37,6 +61,8 @@ return {
         "debugpy",
         "basedpyright",
         "ruff",
+        "ruff-lsp",
+        "pylyzer",
         -- markdown
         "marksman",
         "vale",
@@ -63,32 +89,55 @@ return {
     },
   },
   {
-    "nvim-treesitter/nvim-treesitter",
-    opts = {
-      ensure_installed = {
-        "vim",
-        "lua",
-        "vimdoc",
-        "html",
-        "css",
-        -- sneklang
-        "python",
-        -- md
-        "markdown",
-        -- FP
-        "haskell",
-        -- my first love but she sucks
-        "c_sharp",
-        -- why
-        "java",
-        -- low level
-        "c",
-        "cpp",
-        "rust",
-        -- note-taking
-        "norg",
-      },
+    "luukvbaal/statuscol.nvim",
+    config = function()
+      local builtin = require "statuscol.builtin"
+      require("statuscol").setup {
+        relculright = true,
+        segments = {
+          { text = { builtin.foldfunc }, click = "v:lua.ScFa" },
+          { text = { "%s" }, click = "v:lua.ScSa" },
+          { text = { builtin.lnumfunc, " " }, click = "v:lua.ScLa" },
+        },
+      }
+    end,
+  },
+  {
+    "kdheepak/lazygit.nvim",
+    cmd = {
+      "LazyGit",
+      "LazyGitConfig",
+      "LazyGitCurrentFile",
+      "LazyGitFilter",
+      "LazyGitFilterCurrentFile",
     },
+    -- optional for floating window border decoration
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    -- setting the keybinding for LazyGit with 'keys' is recommended in
+    -- order to load the plugin when the command is run for the first time
+    keys = {
+      { "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
+    },
+  },
+  {
+    "nvim-treesitter/nvim-treesitter",
+    event = "BufEnter",
+    opts = function()
+      return require "configs.treesitter"
+    end,
+  },
+  {
+    "nvim-treesitter/nvim-treesitter-context",
+    event = "LspAttach",
+    config = function()
+      require "configs.treesitter-context"
+    end,
+  },
+  {
+    "RRethy/vim-illuminate",
+    event = "BufEnter",
   },
   {
     "mfussenegger/nvim-dap",
@@ -127,6 +176,12 @@ return {
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
       require "configs.trouble"
+    end,
+  },
+  {
+    "rcarriga/nvim-notify",
+    config = function()
+      require "configs.notify"
     end,
   },
   {
@@ -170,22 +225,21 @@ return {
       require "configs.neorg"
     end,
   },
-  -- Lua
+  -- TODO: finish setting up todo comments
   {
-    "folke/twilight.nvim",
+    "folke/todo-comments.nvim",
     dependencies = {
-      "nvim-treesitter/nvim-treesitter",
+      "nvim-lua/plenary.nvim",
+      "folke/trouble.nvim",
     },
+    event = "BufEnter",
     config = function()
-      require "configs.twilight"
+      require "configs.todo-comments"
     end,
   },
   {
     "folke/zen-mode.nvim",
     event = "BufEnter",
-    dependencies = {
-      "folke/twilight.nvim",
-    },
     config = function()
       require "configs.zen-mode"
     end,
@@ -200,6 +254,13 @@ return {
   },
   {
     "Hoffs/omnisharp-extended-lsp.nvim",
+    ft = { "c_sharp" },
+    dependencies = {
+      "neovim/nvim-lspconfig",
+    },
+  },
+  {
+    "Decodetalkers/csharpls-extended-lsp.nvim",
     ft = { "c_sharp" },
     dependencies = {
       "neovim/nvim-lspconfig",

@@ -1,10 +1,12 @@
 -- EXAMPLE
 local coq = require "coq"
 local ensure_cap = coq.lsp_ensure_capabilities
-local on_attach = require("nvchad.configs.lspconfig").on_attach
+-- local on_attach = require("nvchad.configs.lspconfig").on_attach
+local on_attach = function(client, bufnr)
+  require("lsp_signature").on_attach(client, bufnr)
+end
 local on_init = require("nvchad.configs.lspconfig").on_init
 local capabilities = require("nvchad.configs.lspconfig").capabilities
-
 local lspconfig = require "lspconfig"
 local servers = { "tsserver", "clangd", "bashls", "basedpyright", "marksman", "html", "cssls", "cmake", "openscad_lsp" }
 
@@ -37,19 +39,30 @@ lspconfig.jdtls.setup {
   },
 }
 
+-- lspconfig.csharp_ls.setup {
+--   ensure_cap {
+--     on_attach = on_attach,
+--     on_init = on_init,
+--     capabilities = capabilities,
+--     handlers = {
+--       ["textDocument/definition"] = require("csharpls_extended").handler,
+--       ["textDocument/typeDefinition"] = require("csharpls_extended").handler,
+--     },
+--   },
+-- }
+
 lspconfig.omnisharp.setup {
-  ensure_cap {
-    on_attach = on_attach,
-    on_init = on_init,
-    capabilities = capabilities,
-    cmd = { "dotnet", "/home/huynguyen/.local/share/nvim/mason/packages/omnisharp/libexec/OmniSharp.dll" },
-    enable_editorconfig_support = true,
-    enable_roslyn_analyzers = true,
-    handlers = {
-      ["textDocument/definition"] = require("omnisharp_extended").definition_handler,
-      ["textDocument/references"] = require("omnisharp_extended").references_handler,
-      ["textDocument/implementation"] = require("omnisharp_extended").implementation_handler,
-    },
+  on_attach = require("nvchad.configs.lspconfig").on_attach,
+  on_init = on_init,
+  capabilities = capabilities,
+  cmd = { "dotnet", "/home/huynguyen/.local/share/nvim/mason/packages/omnisharp/libexec/OmniSharp.dll" },
+  enable_editorconfig_support = true,
+  enable_roslyn_analyzers = true,
+  handlers = {
+    ["textDocument/definition"] = require("omnisharp_extended").definition_handler,
+    ["textDocument/typeDefinition"] = require("omnisharp_extended").type_definition_handler,
+    ["textDocument/references"] = require("omnisharp_extended").references_handler,
+    ["textDocument/implementation"] = require("omnisharp_extended").implementation_handler,
   },
 }
 
@@ -61,3 +74,4 @@ lspconfig.hls.setup {
     cmd = { "haskell-language-server-wrapper", "--lsp" },
   },
 }
+-- set up fold
