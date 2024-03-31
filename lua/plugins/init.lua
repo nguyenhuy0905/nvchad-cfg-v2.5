@@ -1,4 +1,3 @@
----@diagnostic disable: different-requires
 return {
   {
     "stevearc/conform.nvim",
@@ -29,6 +28,17 @@ return {
     end,
   },
   {
+    "nvimdev/lspsaga.nvim",
+    event = "LspAttach",
+    config = function()
+      require "configs.lspsaga"
+    end,
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter", -- optional
+      "nvim-tree/nvim-web-devicons", -- optional
+    },
+  },
+  {
     "ms-jpq/coq_nvim",
   },
   {
@@ -40,6 +50,13 @@ return {
     event = "BufEnter",
     config = function()
       require "configs.harpoon"
+    end,
+  },
+  {
+    "ggandor/leap.nvim",
+    event = "BufEnter",
+    config = function()
+      require "configs.leap"
     end,
   },
   {
@@ -88,6 +105,16 @@ return {
     },
   },
   {
+    "kevinhwang91/nvim-ufo",
+    dependencies = {
+      "kevinhwang91/promise-async",
+      "luukvbaal/statuscol.nvim",
+    },
+    config = function ()
+      require("configs.ufo")
+    end
+  },
+  {
     "luukvbaal/statuscol.nvim",
     config = function()
       local builtin = require "statuscol.builtin"
@@ -121,17 +148,20 @@ return {
     },
   },
   {
-    "nvim-treesitter/nvim-treesitter",
-    event = "BufEnter",
-    opts = function()
-      return require "configs.treesitter"
+    "karb94/neoscroll.nvim",
+    lazy = false,
+    config = function()
+      require("neoscroll").setup {
+        easing_function = "circular",
+      }
     end,
   },
   {
-    "nvim-treesitter/nvim-treesitter-context",
-    event = "LspAttach",
-    config = function()
-      require "configs.treesitter-context"
+    "nvim-treesitter/nvim-treesitter",
+    build = ":TSUpdate",
+    event = { "BufReadPre", "BufNewFile" },
+    configs = function()
+      require "configs.treesitter"
     end,
   },
   {
@@ -242,7 +272,6 @@ return {
       require "configs.neorg"
     end,
   },
-  -- TODO: finish setting up todo comments
   {
     "folke/todo-comments.nvim",
     dependencies = {
@@ -253,6 +282,15 @@ return {
     config = function()
       require "configs.todo-comments"
     end,
+  },
+  {
+    "danymat/neogen",
+    event = "LspAttach",
+    config = function()
+      require "configs.neogen"
+    end,
+    -- Uncomment next line if you want to follow only stable versions
+    -- version = "*"
   },
   {
     "folke/zen-mode.nvim",

@@ -7,6 +7,10 @@ local on_attach = function(client, bufnr)
 end
 local on_init = require("nvchad.configs.lspconfig").on_init
 local capabilities = require("nvchad.configs.lspconfig").capabilities
+capabilities.textDocument.foldingRange = {
+  dynamicRegistration = false,
+  lineFoldingOnly = true,
+}
 local lspconfig = require "lspconfig"
 local servers = { "tsserver", "clangd", "bashls", "basedpyright", "marksman", "html", "cssls", "cmake", "openscad_lsp" }
 
@@ -38,19 +42,6 @@ lspconfig.jdtls.setup {
     },
   },
 }
-
--- lspconfig.csharp_ls.setup {
---   ensure_cap {
---     on_attach = on_attach,
---     on_init = on_init,
---     capabilities = capabilities,
---     handlers = {
---       ["textDocument/definition"] = require("csharpls_extended").handler,
---       ["textDocument/typeDefinition"] = require("csharpls_extended").handler,
---     },
---   },
--- }
-
 lspconfig.omnisharp.setup {
   on_attach = require("nvchad.configs.lspconfig").on_attach,
   on_init = on_init,
@@ -74,4 +65,4 @@ lspconfig.hls.setup {
     cmd = { "haskell-language-server-wrapper", "--lsp" },
   },
 }
--- set up fold
+require("ufo").setup()

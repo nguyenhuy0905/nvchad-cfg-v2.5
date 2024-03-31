@@ -1,4 +1,5 @@
-local opts = {
+-- somehow I cannot get this to work
+require("nvim-treesitter.configs").setup {
   ensure_installed = {
     "vim",
     "lua",
@@ -9,6 +10,7 @@ local opts = {
     "python",
     -- md
     "markdown",
+    "markdown_inline",
     -- FP
     "haskell",
     -- my first love but she sucks
@@ -22,8 +24,15 @@ local opts = {
     -- note-taking
     "norg",
   },
-}
-require("nvim-treesitter.configs").setup {
+  incremental_selection = {
+    enable = true,
+    keymaps = {
+      init_selection = "<C-Space>",
+      node_incremental = "<C-Space>",
+      scope_incremental = false,
+      node_decremental = "<bs>",
+    },
+  },
   textobjects = {
     enable = true,
     select = {
@@ -77,5 +86,3 @@ require("nvim-treesitter.configs").setup {
     },
   },
 }
-
-return opts

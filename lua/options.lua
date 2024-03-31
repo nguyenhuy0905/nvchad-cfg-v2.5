@@ -7,6 +7,7 @@ local o = vim.o
 o.termguicolors = true
 o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 o.foldcolumn = "1"
+o.foldlevel = 99
 
 -- autocmd
 local autocmd = vim.api.nvim_create_autocmd
