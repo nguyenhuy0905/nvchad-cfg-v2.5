@@ -36,7 +36,6 @@ return {
     branch = "harpoon2",
     dependencies = {
       "nvim-lua/plenary.nvim",
-      "nvim-telescope/telescope.nvim",
     },
     event = "BufEnter",
     config = function()
@@ -185,6 +184,24 @@ return {
     end,
   },
   {
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    opts = {
+      -- add any options here
+    },
+    dependencies = {
+      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+      "MunifTanjim/nui.nvim",
+      -- OPTIONAL:
+      --   `nvim-notify` is only needed, if you want to use the notification view.
+      --   If not available, we use `mini` as the fallback
+      "rcarriga/nvim-notify",
+    },
+    config = function()
+      require "configs.noice"
+    end,
+  },
+  {
     "nvim-neotest/neotest",
     dependencies = {
       "nvim-neotest/nvim-nio",
@@ -259,13 +276,13 @@ return {
       "neovim/nvim-lspconfig",
     },
   },
-  {
-    "Decodetalkers/csharpls-extended-lsp.nvim",
-    ft = { "c_sharp" },
-    dependencies = {
-      "neovim/nvim-lspconfig",
-    },
-  },
+  -- {
+  --   "Decodetalkers/csharpls-extended-lsp.nvim",
+  --   ft = { "c_sharp" },
+  --   dependencies = {
+  --     "neovim/nvim-lspconfig",
+  --   },
+  -- },
   {
     "mfussenegger/nvim-dap-python",
     ft = { "python" },
