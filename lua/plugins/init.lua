@@ -16,7 +16,6 @@ return {
       require "configs.lspconfig"
     end,
   },
-
   {
     "williamboman/mason.nvim",
     opts = {
@@ -59,10 +58,6 @@ return {
         "rust-analyzer",
       },
     },
-  },
-  -- linters not included in mason
-  {
-    "danmar/cppcheck",
   },
   {
     "nvim-treesitter/nvim-treesitter",
@@ -131,7 +126,6 @@ return {
       require "configs.trouble"
     end,
   },
-  -- Lua
   {
     "nvim-neotest/neotest",
     dependencies = {
@@ -179,9 +173,18 @@ return {
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
     },
-    event = "BufEnter",
     config = function()
       require "configs.twilight"
+    end,
+  },
+  {
+    "folke/zen-mode.nvim",
+    event = "BufEnter",
+    dependencies = {
+      "folke/twilight.nvim",
+    },
+    config = function()
+      require "configs.zen-mode"
     end,
   },
   -- different, more robust tools for some languages
