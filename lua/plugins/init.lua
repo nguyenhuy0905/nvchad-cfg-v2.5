@@ -131,6 +131,7 @@ return {
       require "configs.trouble"
     end,
   },
+  -- Lua
   {
     "nvim-neotest/neotest",
     dependencies = {
