@@ -1,0 +1,9 @@
+{
+    "diagnostics.disable": [
+        "different-requires"
+    ],
+    "diagnostics.globals": [
+        "vim",
+        "map"
+    ]
+}
