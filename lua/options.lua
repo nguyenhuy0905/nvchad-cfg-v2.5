@@ -8,6 +8,7 @@ o.termguicolors = true
 o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 o.foldcolumn = "1"
 o.foldlevel = 99
+o.conceallevel = 2
 
 -- autocmd
 local autocmd = vim.api.nvim_create_autocmd
