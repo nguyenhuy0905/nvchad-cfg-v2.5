@@ -4,10 +4,10 @@ local ensure_cap = coq.lsp_ensure_capabilities ]]
 -- local on_attach = require("nvchad.configs.lspconfig").on_attach
 local on_attach = function(client, bufnr)
   require("lsp_signature").on_attach(client, bufnr)
-  require("nvchad.configs.lspconfig").on_attach(client,bufnr)
+  require("nvchad.configs.lspconfig").on_attach(client, bufnr)
 end
 local on_init = require("nvchad.configs.lspconfig").on_init
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
 capabilities.textDocument.foldingRange = {
   dynamicRegistration = false,
   lineFoldingOnly = true,
@@ -60,4 +60,5 @@ lspconfig.hls.setup {
   capabilities = capabilities,
   cmd = { "haskell-language-server-wrapper", "--lsp" },
 }
-require("ufo").setup()
+require "ufo"
+require "neogit"

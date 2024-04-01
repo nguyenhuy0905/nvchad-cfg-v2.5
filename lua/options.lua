@@ -11,7 +11,7 @@ o.foldlevel = 99
 o.conceallevel = 2
 
 -- autocmd
-local autocmd = vim.api.nvim_create_autocmd
+autocmd = vim.api.nvim_create_autocmd
 vim.notify = require "notify"
 autocmd({ "BufWritePost" }, {
   callback = function()

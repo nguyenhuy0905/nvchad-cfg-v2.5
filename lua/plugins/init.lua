@@ -148,6 +148,19 @@ return {
     },
   },
   {
+    "NeogitOrg/neogit",
+    dependencies = {
+      "nvim-lua/plenary.nvim", -- required
+      "sindrets/diffview.nvim", -- optional - Diff integration
+
+      -- Only one of these is needed, not both.
+      "nvim-telescope/telescope.nvim", -- optional
+    },
+    config = function()
+      require "configs.neogit"
+    end,
+  },
+  {
     "karb94/neoscroll.nvim",
     lazy = false,
     config = function()
@@ -248,17 +261,6 @@ return {
     end,
   },
   {
-    "NeogitOrg/neogit",
-    dependencies = {
-      "nvim-lua/plenary.nvim", -- required
-      "sindrets/diffview.nvim", -- optional - Diff integration
-
-      -- Only one of these is needed, not both.
-      "nvim-telescope/telescope.nvim", -- optional
-    },
-    config = true,
-  },
-  {
     "vhyrro/luarocks.nvim",
     priority = 1000, -- We'd like this plugin to load first out of the rest
     config = true, -- This automatically runs `require("luarocks-nvim").setup()`
@@ -280,7 +282,9 @@ return {
     event = {
       -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
       -- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/**.md"
-      "BufReadPre " .. vim.fn.expand "~" .. "/Obsidian/GTK/**.md",
+      "BufReadPre "
+        .. vim.fn.expand "~"
+        .. "/Obsidian/GTK/**.md",
       -- "BufNewFile path/to/my-vault/**.md",
     },
     dependencies = {
@@ -303,9 +307,9 @@ return {
         -- },
       },
     },
-    config = function ()
-      require("configs.obsidian")
-    end
+    config = function()
+      require "configs.obsidian"
+    end,
   },
   {
     "folke/todo-comments.nvim",
