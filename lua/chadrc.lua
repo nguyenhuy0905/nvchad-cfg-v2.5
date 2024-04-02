@@ -10,11 +10,36 @@ M.ui = {
   theme_toggle = { "catppuccin", "gruvbox" },
 
   hl_override = {
+    NvDashAscii = {
+      bg = "NONE",
+      fg = "cyan",
+    },
     Comment = { italic = true },
     ["@comment"] = { italic = true },
   },
 
   nvdash = {
+    header = {
+      "            ............,             ",
+      "         .';:            :;,,         ",
+      "      .;                     ;;.      ",
+      "    .:                          :.    ",
+      "  .;              .:dddl:.        ;.  ",
+      " .:              OWMKOOXMWd        :. ",
+      ".:              KMMc    xMMc        :.",
+      ",               MMM.     WW:         ,",
+      ":               MMM.                 :",
+      ":        oxOOOo MMM0OOk.             :",
+      ":      0MMKxdd  MMMkddc.             ;",
+      ":     XM0       MMM.                 '",
+      ":     MMo       MMW.                ; ",
+      ":     0MNc     xMMd                ;  ",
+      ":      dNMWXXXWM0:               :,   ",
+      ":        .:odl:.               :,.    ",
+      ":                            :'.      ",
+      ".:                      :;,..         ",
+      "  '::..............::;,.              ",
+    },
     load_on_startup = true,
   },
   cheatsheet = {
@@ -24,11 +49,11 @@ M.ui = {
     style = "flat_dark",
   },
   telescope = {
-    style = "bordered"
+    style = "bordered",
   },
   statusline = {
-    separator_style = "round"
-  }
+    separator_style = "round",
+  },
 }
 
 return M
