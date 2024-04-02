@@ -5,9 +5,9 @@
 local M = {}
 
 M.ui = {
-  theme = "nightfox",
-  transparency = false,
-  theme_toggle = { "nightfox", "gruvbox" },
+  theme = "catppuccin",
+  transparency = true,
+  theme_toggle = { "catppuccin", "gruvbox" },
 
   hl_override = {
     Comment = { italic = true },
@@ -20,6 +20,15 @@ M.ui = {
   cheatsheet = {
     theme = "grid",
   },
+  cmp = {
+    style = "flat_dark",
+  },
+  telescope = {
+    style = "bordered"
+  },
+  statusline = {
+    separator_style = "round"
+  }
 }
 
 return M
