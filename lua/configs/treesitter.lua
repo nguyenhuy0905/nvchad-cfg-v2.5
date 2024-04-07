@@ -6,6 +6,7 @@ require("nvim-treesitter.configs").setup {
     "vimdoc",
     "html",
     "css",
+    "xml",
     -- sneklang
     "python",
     -- md

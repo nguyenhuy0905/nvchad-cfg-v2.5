@@ -97,6 +97,8 @@ return {
         "cmake",
         "cmakelang",
         "codelldb",
+        -- xml
+        "lemminx",
         --haskell
         "haskell-language-server",
         --rust

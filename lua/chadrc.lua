@@ -6,7 +6,7 @@ local M = {}
 
 M.ui = {
   theme = "catppuccin",
-  transparency = true,
+  transparency = false,
   theme_toggle = { "catppuccin", "gruvbox" },
 
   hl_override = {
@@ -46,7 +46,7 @@ M.ui = {
     theme = "grid",
   },
   cmp = {
-    style = "flat_dark",
+    style = "default",
   },
   telescope = {
     style = "bordered",

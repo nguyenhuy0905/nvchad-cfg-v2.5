@@ -1,6 +1,7 @@
 local neogit = require "neogit"
 neogit.setup {}
 -- mapping
+local map = vim.keymap.set
 map("n", "<leader>oc", function()
   neogit.open { "commit" }
 end, { desc = "Neogit Open commit" })

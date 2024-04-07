@@ -13,7 +13,7 @@ capabilities.textDocument.foldingRange = {
   lineFoldingOnly = true,
 }
 local lspconfig = require "lspconfig"
-local servers = { "tsserver", "clangd", "bashls", "basedpyright", "marksman", "html", "cssls", "cmake", "openscad_lsp" }
+local servers = { "tsserver", "clangd", "bashls", "basedpyright", "marksman", "html", "cssls", "cmake", "openscad_lsp", "lemminx" }
 
 -- lsps with default config
 for _, lsp in ipairs(servers) do
@@ -53,7 +53,6 @@ lspconfig.omnisharp.setup {
     ["textDocument/implementation"] = require("omnisharp_extended").implementation_handler,
   },
 }
-
 lspconfig.hls.setup {
   on_attach = on_attach,
   on_init = on_init,
