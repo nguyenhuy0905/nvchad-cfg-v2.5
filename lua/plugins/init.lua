@@ -99,10 +99,18 @@ return {
         "codelldb",
         -- xml
         "lemminx",
+        "xmlformatter",
         --haskell
         "haskell-language-server",
         --rust
         "rust-analyzer",
+        -- perl
+        "perlnavigator",
+        -- docker
+        "dockerfile-language-server",
+        "docker-compose-language-service",
+        -- sql
+        "sqls",
       },
     },
   },
@@ -267,6 +275,7 @@ return {
       "mrcjkb/neotest-haskell",
       "nvim-neotest/neotest-python",
       "rcasia/neotest-java",
+      "rouge8/neotest-rust",
     },
     config = function()
       require "configs.neotest"
@@ -387,14 +396,14 @@ return {
       }
     end,
   },
-  {
-    "mrcjkb/rustaceanvim",
-    version = "^4", -- Recommended
-    ft = { "rust" },
-    config = function()
-      require "configs.rust"
-    end,
-  },
+  -- {
+  --   "mrcjkb/rustaceanvim",
+  --   version = "^4", -- Recommended
+  --   ft = { "rust" },
+  --   config = function()
+  --     require "configs.rust"
+  --   end,
+  -- },
   {
     "iamcco/markdown-preview.nvim",
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
