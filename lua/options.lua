@@ -27,6 +27,7 @@ autocmd({ "LspAttach" }, {
 -- mainly to activate some plugins
 -- adds a new filetype called scad
 vim.cmd [[ autocmd BufRead,BufNewFile *.scad set filetype=openscad ]]
+vim.cmd [[autocmd BufRead,BufNewFile docker-compose.yaml set filetype=yaml.docker-compose]]
 local cmd = vim.api.nvim_create_user_command
 cmd("NeotestAll", function()
   require("neotest").run.run(vim.fn.expand "%")
