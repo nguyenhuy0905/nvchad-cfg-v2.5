@@ -21,7 +21,11 @@ ntest.setup {
     require "neotest-java" {
       ignore_wrapper = true,
     },
-    require "rustaceanvim.neotest",
+    -- require "rustaceanvim.neotest",
+    require "neotest-rust" {
+      args = {"--no-capture"},
+      dap_adapter = "lldb",
+    }
   },
 }
 

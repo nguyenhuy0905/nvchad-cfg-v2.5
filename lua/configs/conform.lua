@@ -5,9 +5,12 @@ local options = {
     html = { "prettier" },
     c = { "clang-format" },
     cpp = { "clang-format" },
+    rust = { "rustfmt" },
     -- cmake = { "cmake-format" },
     c_sharp = { "csharpier" },
     python = { "ruff" },
+    xml = { "xmlfromatter" },
+    sql = { "sqlfluff" },
   },
   -- formatters = {
   --   cmakelang = {

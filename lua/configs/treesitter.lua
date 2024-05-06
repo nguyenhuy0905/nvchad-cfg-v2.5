@@ -22,8 +22,8 @@ require("nvim-treesitter.configs").setup {
     "c",
     "cpp",
     "rust",
-    -- note-taking
-    "norg",
+    -- text processing
+    "perl",
   },
   incremental_selection = {
     enable = true,

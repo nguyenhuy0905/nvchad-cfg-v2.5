@@ -13,7 +13,19 @@ capabilities.textDocument.foldingRange = {
   lineFoldingOnly = true,
 }
 local lspconfig = require "lspconfig"
-local servers = { "tsserver", "clangd", "bashls", "basedpyright", "marksman", "html", "cssls", "cmake", "openscad_lsp", "lemminx" }
+local servers = {
+  "perlnavigator",
+  "tsserver",
+  "clangd",
+  "bashls",
+  "basedpyright",
+  "marksman",
+  "html",
+  "cssls",
+  "cmake",
+  "openscad_lsp",
+  "lemminx",
+}
 
 -- lsps with default config
 for _, lsp in ipairs(servers) do
@@ -25,25 +37,63 @@ for _, lsp in ipairs(servers) do
 end
 
 -- non-default configs
+lspconfig.rust_analyzer.setup {
+  on_attach = on_attach,
+  on_init = on_init,
+  capabilities = capabilities,
+  settings = {
+    ["rust_analyzer"] = {
+      cargo = {
+        allFeatures = true,
+      },
+    },
+  },
+}
+lspconfig.sqls.setup {
+  on_attach = on_attach,
+  on_init = on_init,
+  capabilities = capabilities,
+  cmd = { vim.fn.expand "~" .. "~/.local/share/nvim/mason/packages/sqls/sqls" },
+}
+lspconfig.dockerls.setup {
+  on_attach = on_attach,
+  on_init = on_init,
+  capabilities = capabilities,
+  cmd = {
+    vim.fn.expand "~"
+      .. "/.local/share/nvim/mason/packages/dockerfile-language-server/node_modules/dockerfile-language-server-nodejs/bin/docker-langserver",
+    "--stdio",
+  },
+}
+lspconfig.docker_compose_language_service.setup {
+  on_attach = on_attach,
+  on_init = on_init,
+  capabilities = capabilities,
+  cmd = {
+    vim.fn.expand "~"
+      .. "/.local/share/nvim/mason/packages/docker-compose-language-service/node_modules/.bin/docker-compose-langserver",
+    "--stdio",
+  },
+}
 lspconfig.jdtls.setup {
   on_attach = on_attach,
   on_init = on_init,
   capabilities = capabilities,
   cmd = {
     -- "/home/huynguyen/jdt-language-server/bin/jdtls",
-    "/home/huynguyen/.local/share/nvim/mason/packages/jdtls/bin/jdtls",
+    vim.fn.expand "~" .. "/.local/share/nvim/mason/packages/jdtls/bin/jdtls",
     "-configuration",
     -- I would prefer the cache files to be here
-    "/home/huynguyen/.cache/jdtls/config",
+    vim.fn.expand "~" .. "/.cache/jdtls/config",
     "-data",
-    "/home/huynguyen/.cache/jdtls/workspace",
+    vim.fn.expand "~" .. "/.cache/jdtls/workspace",
   },
 }
 lspconfig.omnisharp.setup {
   on_attach = require("nvchad.configs.lspconfig").on_attach,
   on_init = on_init,
   capabilities = capabilities,
-  cmd = { "dotnet", "/home/huynguyen/.local/share/nvim/mason/packages/omnisharp/libexec/OmniSharp.dll" },
+  cmd = { "dotnet", vim.fn.expand "~" .. "/.local/share/nvim/mason/packages/omnisharp/libexec/OmniSharp.dll" },
   enable_editorconfig_support = true,
   enable_roslyn_analyzers = false,
   handlers = {
