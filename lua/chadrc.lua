@@ -7,7 +7,7 @@ local M = {}
 M.ui = {
   theme = "catppuccin",
   transparency = false,
-  theme_toggle = { "catppuccin", "gruvbox" },
+  theme_toggle = { "kanagawa", "catppuccin" },
 
   hl_override = {
     NvDashAscii = {
