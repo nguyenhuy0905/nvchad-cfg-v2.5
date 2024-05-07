@@ -78,7 +78,6 @@ return {
         "basedpyright",
         "ruff",
         "ruff-lsp",
-        "pylyzer",
         -- markdown
         "marksman",
         "vale",
