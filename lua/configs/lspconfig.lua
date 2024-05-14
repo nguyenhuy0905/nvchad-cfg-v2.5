@@ -53,7 +53,7 @@ lspconfig.sqls.setup {
   on_attach = on_attach,
   on_init = on_init,
   capabilities = capabilities,
-  cmd = { vim.fn.expand "~" .. "~/.local/share/nvim/mason/packages/sqls/sqls" },
+  cmd = { vim.fn.expand "~" .. "/.local/share/nvim/mason/packages/sqls/sqls" },
 }
 lspconfig.dockerls.setup {
   on_attach = on_attach,
