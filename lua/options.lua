@@ -1,6 +1,7 @@
 require "nvchad.options"
 
 -- add yours here!
+vim.lsp.set_log_level("off")
 
 local o = vim.o
 -- o.cursorlineopt ='both' -- to enable cursorline!
