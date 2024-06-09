@@ -1,7 +1,7 @@
 require "nvchad.options"
 
 -- add yours here!
-vim.lsp.set_log_level("off")
+vim.lsp.set_log_level "off"
 
 local o = vim.o
 -- o.cursorlineopt ='both' -- to enable cursorline!
@@ -17,6 +17,7 @@ vim.notify = require "notify"
 autocmd({ "BufWritePost" }, {
   callback = function()
     require("lint").try_lint()
+    require("lint").try_lint "codespell"
   end,
 })
 autocmd({ "LspAttach" }, {
@@ -35,6 +36,7 @@ cmd("NeotestAll", function()
 end, {})
 cmd("Lint", function()
   require("lint").try_lint()
+  require("lint").try_lint "codespell"
 end, {})
 cmd("Neogit", function()
   require("neogit").open()

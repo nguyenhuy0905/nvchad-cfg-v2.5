@@ -69,6 +69,8 @@ return {
         "html-lsp",
         "css-lsp",
         "prettier",
+        -- general
+        "codespell",
         -- openscad
         "openscad-lsp",
         -- bash
@@ -80,7 +82,7 @@ return {
         "ruff-lsp",
         -- markdown
         "marksman",
-        "vale",
+        "markdownlint-cli2",
         -- csharp
         "omnisharp",
         "csharpier",
@@ -93,7 +95,6 @@ return {
         "clang-format",
         "cmake-language-server",
         "checkmake",
-        "cmake",
         "cmakelang",
         "codelldb",
         -- xml
@@ -110,6 +111,7 @@ return {
         "docker-compose-language-service",
         -- sql
         "sqls",
+        "sqlfluff",
       },
     },
   },
@@ -411,4 +413,5 @@ return {
       vim.fn["mkdp#util#install"]()
     end,
   },
+  { "wakatime/vim-wakatime", lazy = false },
 }
