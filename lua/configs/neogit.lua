@@ -10,12 +10,12 @@ map("n", "<leader>og", function()
 end, { desc = "Neogit Open" })
 -- autocmds
 local group = vim.api.nvim_create_augroup("MyCustomNeogitEvent", { clear = true})
-autocmd("User", {
+AUTOCMD("User", {
   pattern = "NeogitPushComplete",
   group = group,
   callback = neogit.close,
 })
-autocmd("User", {
+AUTOCMD("User", {
   pattern = "NeogitCommitComplete",
   group = group,
   callback = neogit.open,

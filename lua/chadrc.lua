@@ -56,4 +56,6 @@ M.ui = {
   },
 }
 
-return M
+if not vim.g.vscode then
+  return M
+end
